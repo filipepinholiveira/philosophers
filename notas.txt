@@ -1,0 +1,34 @@
+
+
+when have even:
+
+time_to_die = time_to_eat + time_to_sleep + 10 miliseconds
+
+
+when have odd:
+
+time_to_die = time_to_eat * 2 + time_to_sleep + 10 miliseconds
+
+
+
+1) odd sleep (time_to_eat / 2)
+2) odd start take from right fork
+even start take from left fork
+3) all philosophers take from right fork, except for last one
+
+
+idea: make all philosophers sleep at the start of the program ----> odd sleep (time_to_eat / 2) so the 1srt half will get the forks
+
+
+thread for each philosophers
+thread to check if any philosophers is dead (check last eat time)
+
+
+Problems may apear:
+
+if theres only 1 philosophers theres only 1 fork, wont be able to eat
+be care of printf
+create my own sleep funtion cause usleep is not precise
+carefull about infinite loops
+valgrind --tool=helgrind ./philosophers
+makefile: -g -fsanitize=thread
