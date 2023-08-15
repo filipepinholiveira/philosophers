@@ -10,9 +10,10 @@
 
 typedef struct data_s
 {
-    int num;
+    
+    pthread_t philos;
+    int *mails;
     pthread_mutex_t mutex;
 } data_t;
-
 
 #endif
