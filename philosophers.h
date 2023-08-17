@@ -6,15 +6,17 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <pthread.h>
+# include <stdlib.h>
+# include "sources/libft/libft.h"
+# include "sources/PRINTF/ft_printf.h"
 
 
 typedef struct data_s
 {
-    
     pthread_t philos;
-    int *mails;
-    pthread_mutex_t mutex;
-} data_t;
+    pthread_mutex_t o_meu_garfo;
+	pthread_mutex_t *garfo_do_outro;
 
+} data_t;
 
 #endif

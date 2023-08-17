@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
+/*   old_stuff.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 18:49:23 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/17 16:08:18 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/08/17 18:12:36 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int mails = 0;
+int count = 0;
 pthread_mutex_t mutex;
 
 void *routine(void *arg)
 {	
 	(void) arg;
 	int k = 0;
-	while (k < 10000)
+	while (k < 5)
 	{
 		pthread_mutex_lock(&mutex);
-		mails++;
+		printf("Eat\n");
+		count++;
 		pthread_mutex_unlock(&mutex);
 		k++;
 	}
@@ -34,7 +35,7 @@ int	main(int ac, char **av)
 	
 	data_t philos;
 	int i;
-	pthread_mutex_init(&philos.mutex, NULL);
+	//pthread_mutex_init(&philos.o_meu_garfo, NULL);
 
 	(void) ac;
 	(void) av;
@@ -45,7 +46,8 @@ int	main(int ac, char **av)
 		if (pthread_join(philos.philos, NULL) != 0)
 		return (2);
 	}
-	printf("valor de mails: %d\n", mails);
+	printf("Numero vezes que come em num loop de 5: %d\n", count);
+	printf("Numero de filosofos: %d\n", i);
 	pthread_mutex_destroy(&mutex);
 	return (0);
 }
