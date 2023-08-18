@@ -17,6 +17,14 @@ typedef struct data_s
     pthread_mutex_t o_meu_garfo;
 	pthread_mutex_t *garfo_do_outro;
 
+    int time;
+    int id_philos;
+
 } data_t;
+
+
+// ft_philos_parcer.c
+
+int	ft_philos_parcer(char **av, int args);
 
 #endif

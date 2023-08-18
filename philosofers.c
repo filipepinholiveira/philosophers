@@ -3,27 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   philosofers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 16:52:59 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/15 17:54:14 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/08/18 17:40:22 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
 
-void *routine(data_t *philos)
+// ph[0] - ph[4]
+
+// while(5)
+
+// 	if (i < 5 - 1)
+// 		ph[i].garfo = &ph[i + 1].gf
+// 	else
+// 		ph[i].garfo = &ph[0].gf
+
+void *routine(void *philos)
 {	
-	int k = 0;
-	while (k < 5)
-	{
-		pthread_mutex_lock(&philos->o_meu_garfo);
-		printf("%ls\n", (int *) &philos->o_meu_garfo);
-		printf("Eat\n");
-		pthread_mutex_unlock(&philos->o_meu_garfo);
-		k++;
-	}
+	data_t *ph;
+
+	ph = (data_t *)philos;
+	pthread_mutex_lock(&ph->o_meu_garfo);
+	printf("Filisofo: %d, Eat\n", ph->id_philos);
+	pthread_mutex_unlock(&ph->o_meu_garfo);
 	return (0);
 }
 
@@ -31,38 +37,36 @@ void	init_philos (int philos_nbr)
 {
 	data_t *philos;
 	int i;
-
-	philos = malloc (sizeof(data_t));
+	
+	philos = malloc (sizeof(data_t) * philos_nbr);
 	if (!philos)
 		return ;
 	i = 0;
 	while (i < philos_nbr)
 	{
-		ft_printf("Filosofo numero %d pronto\n", i + 1);
-		pthread_mutex_init(&philos->o_meu_garfo, NULL);
-		pthread_create(&philos->philos, NULL, routine(philos), philos);
+		philos[i].id_philos = i + 1;
+		pthread_mutex_init(&philos[i].o_meu_garfo, NULL);
+		pthread_create(&philos[i].philos, NULL, routine, ((void *)&philos[i]));
 		i++;
 	}
 	i = 0;
 	while (i < philos_nbr)
 	{
-		pthread_join(philos->philos, NULL);
+		pthread_join(philos[i].philos, NULL);
 		i++;
 	}
-	pthread_mutex_destroy(&philos->o_meu_garfo);
-
+	pthread_mutex_destroy(&philos[i].o_meu_garfo);
 }
 
 int	main(int ac, char **av)
 {
 	(void) ac;
 	(void) av;
-	int k;
 
-	if (ac == 1)
+	if (ac != 5 && ac != 6)
 		return (1);
-	k = ft_atoi(av[1]);
-	printf("Numeros de filosofos é %d\n", k);
-	init_philos(k);
+	if (ft_philos_parcer(av, ac - 1) == 1)
+		return (1);
+	init_philos(ac - 1);
 	return (0);
 }
