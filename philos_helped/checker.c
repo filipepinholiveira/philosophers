@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:52:59 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/22 03:58:21 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/08/22 05:28:22 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	*all_full_routine(void *data_p)
 	if (get_keep_iterate(data) == true) //get_utils.c
 	{
 		set_keep_iterate(data, false); //setter.c
-		notify_all_philo(data);
+		notify_all_philo(data); //checkers.c
 	}
 	return(NULL);
 }

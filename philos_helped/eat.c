@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 19:56:23 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/22 01:17:03 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/08/22 05:34:54 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int eat(t_philo *philo)
     print_msg(philo->data, philo->id, EAT); //utils.c
     update_last_meal_time(philo); //eat.c
     sleep_for_eat(philo); //sleep.c
+    update_nb_meals_had(philo); //eat.c
     drop_forks(philo); //drop_fork_utils_2.c
     return (0);
 }
