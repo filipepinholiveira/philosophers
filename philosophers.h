@@ -5,11 +5,12 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <sys/time.h>
+# include <stdint.h>
 # include <pthread.h>
 # include <stdlib.h>
 # include "sources/libft/libft.h"
 # include "sources/PRINTF/ft_printf.h"
-
 
 typedef struct data_s
 {

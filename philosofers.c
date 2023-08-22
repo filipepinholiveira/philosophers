@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosofers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 16:52:59 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/18 17:40:22 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/08/20 18:21:38 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(int ac, char **av)
 	(void) ac;
 	(void) av;
 
-	if (ac != 5 && ac != 6)
+	if (ac < 6 || ac > 7)
 		return (1);
 	if (ft_philos_parcer(av, ac - 1) == 1)
 		return (1);

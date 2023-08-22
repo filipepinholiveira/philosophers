@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_philos_parcer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 15:55:13 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/18 17:45:07 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/08/20 19:27:25 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
 
 int	ft_check_nbr(char *av)
 {

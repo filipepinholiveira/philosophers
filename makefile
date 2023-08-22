@@ -2,6 +2,7 @@ CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 MAND = philosofers.c \
 ft_philos_parcer.c \
+time.c \
 sources/libft/ft_atoi.c \
 sources/PRINTF/ft_printf.c \
 sources/PRINTF/ft_putchar.c \
