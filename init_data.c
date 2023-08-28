@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 18:49:16 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/21 20:25:08 by fpinho-d         ###   ########.fr       */
+/*   Created: 2023/08/28 15:57:35 by fpinho-d          #+#    #+#             */
+/*   Updated: 2023/08/28 16:14:19 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
-
+#include "philosophers.h"
 
 int	init_forks(t_data *data)
 {
@@ -33,15 +32,14 @@ int	init_forks(t_data *data)
 	return (0);
 }
 
-
 int	init_philos(t_data *data)
 {
 	t_philo	*philos;
-	int	i;
+	int		i;
 
 	i = -1;
 	philos = data->philos;
-	while(++i < data->nb_philos)
+	while (++i < data->nb_philos)
 	{
 		philos[i].data = data;
 		philos[i].id = i + 1;
@@ -55,7 +53,6 @@ int	init_philos(t_data *data)
 	return (0);
 }
 
-
 int	malloc_data(t_data *data)
 {
 	data->philos = malloc (sizeof(t_philo) * data->nb_philos);
@@ -64,8 +61,8 @@ int	malloc_data(t_data *data)
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philos);
 	if (!data->forks)
 	{
-		free(data->philos);
-		return(MALLOC_ERROR);
+		free (data->philos);
+		return (MALLOC_ERROR);
 	}
 	data->philo_ths = malloc(sizeof(pthread_t) * data->nb_philos);
 	if (!data->philo_ths)
@@ -77,7 +74,7 @@ int	malloc_data(t_data *data)
 	return (0);
 }
 
-int init_data(t_data *data, int ac, char **av)
+int	init_data(t_data *data, int ac, char **av)
 {
 	data->nb_full_p = 0;
 	data->keep_iterating = true;
@@ -95,5 +92,5 @@ int init_data(t_data *data, int ac, char **av)
 	pthread_mutex_init(&data->mut_nb_philos, NULL);
 	pthread_mutex_init(&data->mut_keep_iter, NULL);
 	pthread_mutex_init(&data->mut_start_time, NULL);
-	return(malloc_data(data)); //init_data.c
+	return (malloc_data(data)); //init_data.c
 }

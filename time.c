@@ -3,62 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 15:59:37 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/21 16:54:58 by fpinho-d         ###   ########.fr       */
+/*   Created: 2023/08/21 19:59:53 by fpinho-d          #+#    #+#             */
+/*   Updated: 2023/08/28 16:15:31 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-// struct timeval 
-// {
-//     time_t      tv_sec;     /* seconds */
-//     suseconds_t tv_usec;    /* microseconds */
-// };
-// 1 second = 1 000 000 microseconds
-// 1 second =     1 000 milliseconds (este e o valor que usamos)
-
-//int gettimeofday(struct timeval *tv, struct timezone *tz);
-
-uint64_t	get_time(void)
+void	ft_usleep(uint64_t sleep_time)
 {
-	struct timeval tv;
+	u_int64_t	start;
+
+	start = get_time(); //time.c
+	while (get_time() - start < sleep_time) //time.c
+		usleep(500);
+}
+
+u_int64_t	get_time(void)
+{
+	struct timeval	tv;
 
 	if (gettimeofday(&tv, NULL))
 		return (0);
-	return (tv.tv_sec * (uint64_t)1000 + (tv.tv_usec / 1000));
-}
-
-
-
-void example()
-{
-	struct timeval time;
-	gettimeofday(&time, NULL);
-	printf("valor em secs:%ld\n", time.tv_sec);
-	printf("valor em microsecs:%ld\n", time.tv_usec);
-	printf("anos passados desde 1970:%ld\n", time.tv_sec / 60 / 60 / 24 / 365);
-}
-
-void    example_2()
-{
-	uint64_t		start_time;
-	uint_fast64_t	now;
-
-	start_time = get_time();
-	usleep(10000);
-	now = get_time();
-	printf("%ld millisegundos passaram desde o inicio da execuçao\n", now - start_time);
-
-}
-
-
-int main()
-{
-	example();
-	puts("");
-	example_2();
-	return (0);
+	return ((tv.tv_sec * (u_int64_t)1000) + (tv.tv_usec / 1000));
 }

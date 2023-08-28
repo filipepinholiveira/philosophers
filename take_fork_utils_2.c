@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_hexa.c                                   :+:      :+:    :+:   */
+/*   take_fork_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 18:29:28 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/01/26 18:18:30 by fpinho-d         ###   ########.fr       */
+/*   Created: 2023/08/22 00:18:17 by fpinho-d          #+#    #+#             */
+/*   Updated: 2023/08/28 16:23:21 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "philosophers.h"
 
-int	ft_count_hexa(size_t a)
+void	drop_forks(t_philo *philo)
 {
-	int	len;
-
-	len = 1;
-	while (a > 15)
-	{
-		a = a / 16;
-		len++;
-	}
-	return (len);
+	pthread_mutex_unlock(philo->right_f);
+	pthread_mutex_unlock(philo->left_f);
 }
 
-int	ft_putnbr_hexa(size_t x, char *base)
+void	drop_right_fork(t_philo *philo)
 {
-	int	len;
+	pthread_mutex_unlock(philo->right_f);
+}
 
-	len = ft_count_hexa(x);
-	if (x > 15)
-	{
-		ft_putnbr_hexa(x / 16, base);
-		ft_putnbr_hexa(x % 16, base);
-	}
-	else
-		ft_putchar(base[x]);
-	return (len);
+void	drop_left_fork(t_philo *philo)
+{
+	pthread_mutex_unlock(philo->left_f);
 }

@@ -1,20 +1,24 @@
+
 CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
-MAND = philosofers.c \
-ft_philos_parcer.c \
+MAND = philo.c \
+parse.c \
+ft_atoi.c \
+init_data.c \
+eat.c \
 time.c \
-sources/libft/ft_atoi.c \
-sources/PRINTF/ft_printf.c \
-sources/PRINTF/ft_putchar.c \
-sources/PRINTF/ft_putstr.c \
-sources/PRINTF/ft_putnbr.c \
-sources/PRINTF/ft_putnbr_u.c \
-sources/PRINTF/ft_putnbr_hexa.c \
-sources/PRINTF/ft_putnbr_hexa_ptr.c
-
+routine.c \
+setter.c \
+get_utils.c \
+get_utils_2.c \
+checker.c \
+take_fork_utils.c \
+take_fork_utils_2.c \
+utils.c \
+sleep.c \
+think.c \
 
 NAME = philosophers
-
 OBJ_MAND = $(MAND:.c=.o)
 
 all: $(NAME)

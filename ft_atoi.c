@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 18:53:05 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/21 22:45:15 by fpinho-d         ###   ########.fr       */
+/*   Created: 2023/08/28 16:13:47 by fpinho-d          #+#    #+#             */
+/*   Updated: 2023/08/28 16:26:36 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philosophers.h"
 
 int	ft_atoi(char *str)
 {
