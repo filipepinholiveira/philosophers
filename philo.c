@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:32:49 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/28 17:52:27 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/08/29 16:34:29 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,5 @@ int	main(int ac, char **av)
 	}
 	if (philosophers(ac, av) != 0) // philo.c
 		return (MALLOC_ERROR);
-	//usleep(10000);
-	//printf("tudo bem ate aqui\n");
 	return (0);
 }
