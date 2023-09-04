@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:52:00 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/04 16:00:56 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/04 19:17:57 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	take_left_fork(t_philo *philo)
 
 int	take_forks(t_philo *philo)
 {
-	if (get_nbr_philos(philo->data) == 1) //get_utils.c
+	if (philo->data->nb_philos == 1) //get_utils.c
 		return (handle_1_philo(philo)); //utils.c
 	if (philo->id % 2 == 0)
 	{

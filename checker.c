@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 16:13:31 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/28 16:30:08 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/04 19:20:49 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	notify_all_philo(t_data *data)
 	int		nb_philos;
 
 	philos = data->philos;
-	nb_philos = get_nbr_philos(data); //get_utils.c
+	nb_philos = data->nb_philos; //get_utils.c
 	i = -1;
 	while (++i < nb_philos)
 		set_philo_state(&philos[i], DEAD); //setters.c
@@ -42,7 +42,7 @@ bool	philo_died(t_philo *philo)
 
 	data = philo->data;
 	result = false;
-	if (get_time() - get_last_eat_time(philo) > get_die_time(data) //time.c && ... && get_utils_2.c
+	if (get_time() - get_last_eat_time(philo) > philo->data->die_time //time.c && ... && get_utils_2.c
 		&& get_philo_state(philo) != EATING)
 	{
 		(set_philo_state(philo, DEAD)); //setters.c
@@ -60,7 +60,7 @@ void	*all_alive_routine(void *data_p)
 
 	data = (t_data *) data_p;
 	philo = data->philos;
-	nb_philos = get_nbr_philos(data); //get_utils.c
+	nb_philos = data->nb_philos; //get_utils.c
 	i = -1;
 	while (++i < nb_philos && get_keep_iterate(data)) //get_utils_2.c
 	{
@@ -86,7 +86,7 @@ void	*all_full_routine(void *data_p)
 
 	data = (t_data *) data_p;
 	i = -1;
-	nb_philos = get_nbr_philos(data); //get_utils.c
+	nb_philos = data->nb_philos; //get_utils.c
 	while (++i < nb_philos && get_keep_iterate(data)) //get_utils_2.c
 	{
 		ft_usleep(1000);

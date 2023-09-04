@@ -1,5 +1,5 @@
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -fsanitize=thread
 
 MAND = philo.c \
 parse.c \
@@ -10,7 +10,6 @@ time.c \
 routine.c \
 setter.c \
 get_utils.c \
-get_utils_2.c \
 checker.c \
 take_fork_utils.c \
 take_fork_utils_2.c \

@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:32:49 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/04 16:28:36 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/04 19:18:56 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	join_trhead(t_data *data)
 	int	i;
 	int	nb_philos;
 
-	nb_philos = get_nbr_philos(data); //get_utils.c
+	nb_philos = data->nb_philos; //get_utils.c
 	i = -1;
 	if (pthread_join(data->monit_all_alive, NULL))
 		return (1);
@@ -37,7 +37,7 @@ int	run_threads(t_data *data)
 	int	i;
 	int	nb_philos;
 
-	nb_philos = get_nbr_philos(data); //get_utils.c
+	nb_philos = data->nb_philos; //get_utils.c
 	i = -1;
 	data->start_time = get_time();
 	while (++i < nb_philos)

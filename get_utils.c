@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:47:14 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/28 16:14:14 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/04 19:29:12 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,6 @@ bool	get_keep_iterate(t_data *data)
 	return (keep_iterate);
 }
 
-int	get_nbr_philos(t_data *data)
-{
-	int	nb_philos;
-
-	pthread_mutex_lock(&data->mut_nb_philos);
-	nb_philos = data->nb_philos;
-	pthread_mutex_unlock(&data->mut_nb_philos);
-	return (nb_philos);
-}
-
 t_state	get_philo_state(t_philo *philo)
 {
 	t_state	state;
@@ -52,12 +42,12 @@ t_state	get_philo_state(t_philo *philo)
 	return (state);
 }
 
-u_int64_t	get_start_time(t_data *data)
+uint64_t	get_last_eat_time(t_philo *philo)
 {
-	uint64_t	start_time;
+	uint64_t	last_eat_time;
 
-	pthread_mutex_lock(&data->mut_start_time);
-	start_time = data->start_time;
-	pthread_mutex_unlock(&data->mut_start_time);
-	return (start_time);
+	pthread_mutex_lock(&philo->mut_last_eat_time);
+	last_eat_time = philo->last_eat_time;
+	pthread_mutex_unlock(&philo->mut_last_eat_time);
+	return (last_eat_time);
 }

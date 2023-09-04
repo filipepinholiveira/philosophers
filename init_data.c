@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:57:35 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/04 17:53:18 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/04 19:31:03 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,7 @@ int	init_data(t_data *data, int ac, char **av)
 	data->nb_meals = -1;
 	if (ac == 6)
 		data->nb_meals = ft_atoi(av[5]);
-	pthread_mutex_init(&data->mut_eat_t, NULL);
-	pthread_mutex_init(&data->mut_die_t, NULL);
-	pthread_mutex_init(&data->mut_sleep_t, NULL);
 	pthread_mutex_init(&data->mut_print, NULL);
-	pthread_mutex_init(&data->mut_nb_philos, NULL);
 	pthread_mutex_init(&data->mut_keep_iter, NULL);
-	pthread_mutex_init(&data->mut_start_time, NULL);
 	return (malloc_data(data)); //init_data.c
 }

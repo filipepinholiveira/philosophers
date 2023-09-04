@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:58:17 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/28 16:11:12 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/04 19:33:37 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,12 @@ typedef struct s_data
 	u_int64_t		die_time;
 	u_int64_t		sleep_time;
 	u_int64_t		start_time;
-	pthread_mutex_t	mut_eat_t;
-	pthread_mutex_t	mut_die_t;
-	pthread_mutex_t	mut_sleep_t;
 	pthread_mutex_t	mut_print;
-	pthread_mutex_t	mut_nb_philos;
 	pthread_mutex_t	mut_keep_iter;
-	pthread_mutex_t	mut_start_time;
+	pthread_mutex_t	*forks;
 	pthread_t		monit_all_alive;
 	pthread_t		monit_all_full;
 	pthread_t		*philo_ths;
-	pthread_mutex_t	*forks;
 	t_philo			*philos;
 }	t_data;
 
@@ -99,17 +94,12 @@ int			eat(t_philo *philo);
 
 int			ft_atoi(char *str);
 
-//get_utils.c && get_utils_2.c
+//get_utils.c
 
 int			get_nb_meals_had(t_philo *philo);
-int			get_nbr_philos(t_data *data);
-t_state		get_philo_state(t_philo *philo);
-u_int64_t	get_start_time(t_data *data);
 bool		get_keep_iterate(t_data *data);
-
-uint64_t	get_sleep_time(t_data *data);
-uint64_t	get_eat_time(t_data *data);
-uint64_t	get_die_time(t_data *data);
+t_state		get_philo_state(t_philo *philo);
+int			get_nbr_philos(t_data *data);
 uint64_t	get_last_eat_time(t_philo *philo);
 
 //init_data.c
