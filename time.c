@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 19:59:53 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/08/28 16:15:31 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/04 17:37:54 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_usleep(uint64_t sleep_time)
 
 	start = get_time(); //time.c
 	while (get_time() - start < sleep_time) //time.c
-		usleep(500);
+		usleep(50);
 }
 
 u_int64_t	get_time(void)
