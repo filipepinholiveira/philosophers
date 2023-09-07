@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_fork_utils_2.c                                :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 00:18:17 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/07 17:59:04 by fpinho-d         ###   ########.fr       */
+/*   Created: 2022/11/28 15:05:41 by fpinho-d          #+#    #+#             */
+/*   Updated: 2022/11/28 18:39:06 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "libft.h"
+#include <stdlib.h>
 
-void	drop_forks(t_philo *philo)
+t_list	*ft_lstnew(void *content)
 {
-	pthread_mutex_unlock(philo->right_f);
-	pthread_mutex_unlock(philo->left_f);
-}
+	t_list	*ptr;
 
-void	drop_left_fork(t_philo *philo)
-{
-	pthread_mutex_unlock(philo->left_f);
+	ptr = (t_list *)malloc (sizeof(t_list));
+	if (!ptr)
+		return (NULL);
+	ptr->content = content;
+	ptr->next = NULL;
+	return (ptr);
 }
-
-void	drop_right_fork(t_philo *philo)
+/*
+int main()
 {
-	pthread_mutex_unlock(philo->right_f);
+	t_list *ptr1 = NULL;
+	char str[] = "HELLO WORLD";
+	ptr1 = ft_lstnew(&str);
+	printf("%s\n", (char *)(ptr1->content));
 }
+*/

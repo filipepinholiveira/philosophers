@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_fork_utils_2.c                                :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 00:18:17 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/07 17:59:04 by fpinho-d         ###   ########.fr       */
+/*   Created: 2022/11/02 13:11:30 by fpinho-d          #+#    #+#             */
+/*   Updated: 2022/11/09 14:54:42 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include <unistd.h>
+#include <stdio.h>
 
-void	drop_forks(t_philo *philo)
+size_t	ft_strlen(const char *s)
 {
-	pthread_mutex_unlock(philo->right_f);
-	pthread_mutex_unlock(philo->left_f);
-}
+	size_t	i;
 
-void	drop_left_fork(t_philo *philo)
-{
-	pthread_mutex_unlock(philo->left_f);
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	return (i);
 }
-
-void	drop_right_fork(t_philo *philo)
+/*
+** LIBRARY: <string.h>
+** SYNOPSIS: find length of string
+**
+** DESCRIPTION:
+** 		The strlen() function computes the length of the string s.
+*/
+/*
+int	main()
 {
-	pthread_mutex_unlock(philo->right_f);
-}
+	char str[] = "vai ficar tudo bem";
+	printf("valor e' %zu", ft_strlen(str));
+}*/

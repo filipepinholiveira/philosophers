@@ -1,29 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_fork_utils_2.c                                :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 00:18:17 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/07 17:59:04 by fpinho-d         ###   ########.fr       */
+/*   Created: 2022/11/30 15:14:40 by fpinho-d          #+#    #+#             */
+/*   Updated: 2022/12/02 16:14:25 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "libft.h"
 
-void	drop_forks(t_philo *philo)
+int	ft_lstsize(t_list *lst)
 {
-	pthread_mutex_unlock(philo->right_f);
-	pthread_mutex_unlock(philo->left_f);
-}
+	int		i;
+	t_list	*temp;
 
-void	drop_left_fork(t_philo *philo)
-{
-	pthread_mutex_unlock(philo->left_f);
+	i = 0;
+	temp = lst;
+	while (temp != NULL)
+	{
+		i++;
+		temp = temp->next;
+	}
+	return (i);
 }
+/*
+int main()
+{
+	t_list *first;
+	t_list *second;
+	char a[] = "Filipe"; 
+	int b = 2;
+	int size;
 
-void	drop_right_fork(t_philo *philo)
-{
-	pthread_mutex_unlock(philo->right_f);
+	first = ft_lstnew(&a);
+	second = ft_lstnew(&b);
+//	second = NULL;
+	first->next = second;
+	size = ft_lstsize(first);
+	printf("%d", size);
+
 }
+*/

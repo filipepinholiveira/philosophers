@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_fork_utils_2.c                                :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 00:18:17 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/07 17:59:04 by fpinho-d         ###   ########.fr       */
+/*   Created: 2022/12/02 19:25:34 by fpinho-d          #+#    #+#             */
+/*   Updated: 2022/12/03 18:07:23 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
-
-void	drop_forks(t_philo *philo)
+#include "libft.h"
+/*
+static void	del(void *content)
 {
-	pthread_mutex_unlock(philo->right_f);
-	pthread_mutex_unlock(philo->left_f);
+	content = NULL;
+	free(content);
 }
+*/
 
-void	drop_left_fork(t_philo *philo)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	pthread_mutex_unlock(philo->left_f);
+	if (!lst)
+		return ;
+	del(lst->content);
+	free(lst);
 }
-
-void	drop_right_fork(t_philo *philo)
+/*
+int main()
 {
-	pthread_mutex_unlock(philo->right_f);
+	t_list	*Teste;
+	char a[] = "Filipe";
+	Teste = ft_lstnew(a);
+	printf("%s\n", (char *) Teste->content);
+	ft_lstdelone(Teste, &del);
+	printf("%s\n", (char *) Teste->content);
 }
+*/

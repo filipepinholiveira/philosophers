@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   take_fork_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:52:00 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/11 18:18:33 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:59:22 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-int	take_right_fork(t_philo *philo)
-{
-	if (philo_died(philo) || get_philo_state(philo) == DEAD) 
-		return (1); // checker.c && get_utils.c
-	pthread_mutex_lock(philo->right_f);
-	print_msg(philo->data, philo->id, TAKE_FORKS); //utils.c
-	return (0);
-}
 
 int	take_left_fork(t_philo *philo)
 {
@@ -29,6 +20,15 @@ int	take_left_fork(t_philo *philo)
 	print_msg(philo->data, philo->id, TAKE_FORKS); //utils.c
 	return (0);
 }
+int	take_right_fork(t_philo *philo)
+{
+	if (philo_died(philo) || get_philo_state(philo) == DEAD) 
+		return (1); // checker.c && get_utils.c
+	pthread_mutex_lock(philo->right_f);
+	print_msg(philo->data, philo->id, TAKE_FORKS); //utils.c
+	return (0);
+}
+
 
 int	take_forks(t_philo *philo)
 {

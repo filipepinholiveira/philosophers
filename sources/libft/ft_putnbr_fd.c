@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_fork_utils_2.c                                :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 00:18:17 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/07 17:59:04 by fpinho-d         ###   ########.fr       */
+/*   Created: 2022/11/23 19:22:07 by fpinho-d          #+#    #+#             */
+/*   Updated: 2022/11/24 18:18:50 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "libft.h"
 
-void	drop_forks(t_philo *philo)
+void	ft_putnbr_fd(int n, int fd)
 {
-	pthread_mutex_unlock(philo->right_f);
-	pthread_mutex_unlock(philo->left_f);
-}
+	long	s;
+	char	i;
 
-void	drop_left_fork(t_philo *philo)
-{
-	pthread_mutex_unlock(philo->left_f);
+	s = n;
+	if (s < 0)
+	{
+		write(fd, "-", 1);
+		s = -s;
+	}
+	if (s >= 10)
+		ft_putnbr_fd(s / 10, fd);
+	i = ((s % 10) + 48);
+	write(fd, &i, 1);
 }
-
-void	drop_right_fork(t_philo *philo)
+/*
+int main()
 {
-	pthread_mutex_unlock(philo->right_f);
+	int i = -1000;
+	ft_putnbr_fd(i, 1);
 }
+*/

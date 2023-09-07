@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_fork_utils_2.c                                :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 00:18:17 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/07 17:59:04 by fpinho-d         ###   ########.fr       */
+/*   Created: 2022/11/02 13:11:03 by fpinho-d          #+#    #+#             */
+/*   Updated: 2022/11/09 14:52:21 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "libft.h"
+#include <stdio.h>
 
-void	drop_forks(t_philo *philo)
+int	ft_isascii(int c)
 {
-	pthread_mutex_unlock(philo->right_f);
-	pthread_mutex_unlock(philo->left_f);
+	if (c >= 0 && c <= 127)
+	{
+		return (1);
+	}
+	return (0);
 }
 
-void	drop_left_fork(t_philo *philo)
+/*
+** LIBRARY: <ctype.h>
+** SYNOPSIS: test for ASCII character
+**
+** DESCRIPTION:
+** 		The isascii() function tests for an ASCII character, which is any
+**	character between 0 and octal 0177 inclusive.
+*/
+/*
+int	main()
 {
-	pthread_mutex_unlock(philo->left_f);
-}
+	int	c;
 
-void	drop_right_fork(t_philo *philo)
-{
-	pthread_mutex_unlock(philo->right_f);
-}
+	c = '@';
+	printf("%d", ft_isascii(c));
+}*/

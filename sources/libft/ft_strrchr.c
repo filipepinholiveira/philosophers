@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_fork_utils_2.c                                :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 00:18:17 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/07 17:59:04 by fpinho-d         ###   ########.fr       */
+/*   Created: 2022/11/02 13:14:17 by fpinho-d          #+#    #+#             */
+/*   Updated: 2022/11/12 18:25:40 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "libft.h"
 
-void	drop_forks(t_philo *philo)
+char	*ft_strrchr(const char *s, int c)
 {
-	pthread_mutex_unlock(philo->right_f);
-	pthread_mutex_unlock(philo->left_f);
-}
+	int	i;
 
-void	drop_left_fork(t_philo *philo)
-{
-	pthread_mutex_unlock(philo->left_f);
+	i = ft_strlen(s) - 1;
+	s = (s + i);
+	if (c == '\0')
+	{
+		return ((char *)s + ft_strlen(s));
+	}
+	while (i > 0 && c != *s)
+	{
+		s--;
+		i--;
+	}
+	if (c == *s)
+	{
+		return ((char *)s);
+	}
+	return (NULL);
 }
-
-void	drop_right_fork(t_philo *philo)
+/*
+int	main()
 {
-	pthread_mutex_unlock(philo->right_f);
+	char	a[] = "Tiago Oliveira";
+	printf("%s\n", ft_strrchr(a, 'O'));
 }
+*/

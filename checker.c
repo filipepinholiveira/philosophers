@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fpinho-d <fpinho-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 16:13:31 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/11 18:15:44 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:39:03 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	notify_all_philo(t_data *data)
 bool	philo_died(t_philo *philo)
 {
 	bool	result;
-	t_data	*data;
+	//t_data	*data;
 
-	data = philo->data;
+	//data = philo->data;
 	result = false;
 	if (get_time() - get_last_eat_time(philo) > philo->data->die_time //time.c && ... && get_utils_2.c
 		&& get_philo_state(philo) != EATING)
@@ -73,7 +73,7 @@ void	*all_alive_routine(void *data_p)
 		}
 		if (i == nb_philos - 1)
 			i = -1;
-		ft_usleep(1000); //time.c
+		usleep(1000); //time.c
 	}
 	return (NULL);
 }
