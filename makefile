@@ -1,4 +1,3 @@
-
 CFLAGS = -Wall -Wextra -Werror -fsanitize=thread
 
 MAND = philo.c \
