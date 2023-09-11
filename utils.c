@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 21:17:56 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/11 18:19:19 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:29:19 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	handle_1_philo(t_philo *philo)
 	take_left_fork(philo); //take_fork_utils.c
 	ft_usleep(philo->data->die_time); //time.c
 	set_philo_state(philo, DEAD); //setter.c
+	drop_left_fork(philo);
 	return (1);
 }
 
