@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 16:13:31 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/12 18:24:22 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:06:16 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,21 @@ void	notify_all_philo(t_data *data)
 	int		nb_philos;
 
 	philos = data->philos;
-	nb_philos = data->nb_philos; //get_utils.c
+	nb_philos = data->nb_philos;
 	i = -1;
 	while (++i < nb_philos)
-		set_philo_state(&philos[i], DEAD); //setters.c
+		set_philo_state(&philos[i], DEAD);
 }
 
 bool	philo_died(t_philo *philo)
 {
 	bool	result;
-	//t_data	*data;
 
-	//data = philo->data;
 	result = false;
-	if (get_time() - get_last_eat_time(philo) > philo->data->die_time //time.c && ... && get_utils_2.c
+	if (get_time() - get_last_eat_time(philo) > philo->data->die_time
 		&& get_philo_state(philo) != EATING)
 	{
-		(set_philo_state(philo, DEAD)); //setters.c
+		(set_philo_state(philo, DEAD));
 		result = true;
 	}
 	return (result);
@@ -60,20 +58,20 @@ void	*all_alive_routine(void *data_p)
 
 	data = (t_data *) data_p;
 	philo = data->philos;
-	nb_philos = data->nb_philos; //get_utils.c
+	nb_philos = data->nb_philos;
 	i = -1;
-	while (++i < nb_philos && get_keep_iterate(data)) //get_utils_2.c
+	while (++i < nb_philos && get_keep_iterate(data))
 	{
-		if (philo_died(&philo[i]) && get_keep_iterate(data)) //checkers.c && get_utils_2.c
+		if (philo_died(&philo[i]) && get_keep_iterate(data))
 		{
-			print_msg(data, philo[i].id, DIED); //utils.c
-			set_keep_iterate(data, false); //setter.c
-			notify_all_philo(data); //checker.c
+			print_msg(data, philo[i].id, DIED);
+			set_keep_iterate(data, false);
+			notify_all_philo(data);
 			break ;
 		}
 		if (i == nb_philos - 1)
 			i = -1;
-		usleep(1000); //time.c
+		usleep(1000);
 	}
 	return (NULL);
 }
@@ -86,17 +84,17 @@ void	*all_full_routine(void *data_p)
 
 	data = (t_data *) data_p;
 	i = -1;
-	nb_philos = data->nb_philos; //get_utils.c
-	while (++i < nb_philos && get_keep_iterate(data)) //get_utils_2.c
+	nb_philos = data->nb_philos;
+	while (++i < nb_philos && get_keep_iterate(data))
 	{
 		ft_usleep(1000);
-		if (is_philo_full(data, &data->philos[i]) == false) //checkers.c
+		if (is_philo_full(data, &data->philos[i]) == false)
 			i = -1;
 	}
-	if (get_keep_iterate(data) == true) //get_utils.c
+	if (get_keep_iterate(data) == true)
 	{
-		set_keep_iterate(data, false); //setter.c
-		notify_all_philo(data); //checkers.c
+		set_keep_iterate(data, false);
+		notify_all_philo(data);
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:49:58 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/11 18:20:51 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:06:33 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	check_inputs(int ac, char **av)
 {
 	if (ac != 5 && ac != 6)
 		return (WRONG_INPUT);
-	if (is_digit(ac, av) != 0) //parse.c
+	if (is_digit(ac, av) != 0)
 		return (WRONG_INPUT);
 	return (0);
 }

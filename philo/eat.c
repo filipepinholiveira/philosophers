@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 16:13:38 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/12 17:52:17 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:03:45 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ void	update_nb_meals_had(t_philo *philo)
 void	update_last_meal_time(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->mut_last_eat_time);
-	philo->last_eat_time = get_time(); //time.c
+	philo->last_eat_time = get_time();
 	pthread_mutex_unlock(&philo->mut_last_eat_time);
 }
 
 int	eat(t_philo *philo)
 {
-	if (take_forks(philo) != 0) //take_fork_utils.c
+	if (take_forks(philo) != 0)
 		return (1);
-	set_philo_state(philo, EATING); //setters.c
-	print_msg(philo->data, philo->id, EAT); //utils.c
-	update_last_meal_time(philo); //eat.c
-	sleep_for_eat(philo); //sleep.c
-	update_nb_meals_had(philo); //eat.c
-	drop_forks(philo); //drop_fork_utils_2.c
+	set_philo_state(philo, EATING);
+	print_msg(philo->data, philo->id, EAT);
+	update_last_meal_time(philo);
+	sleep_for_eat(philo);
+	update_nb_meals_had(philo);
+	drop_forks(philo);
 	return (0);
 }

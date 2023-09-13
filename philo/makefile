@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread
 
 MAND = philo.c \
 parse.c \

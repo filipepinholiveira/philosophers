@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:57:35 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/11 18:16:46 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:01:49 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	init_philos(t_data *data)
 		pthread_mutex_init(&philos[i].mut_state, NULL);
 		pthread_mutex_init(&philos[i].mut_nb_meals_had, NULL);
 		pthread_mutex_init(&philos[i].mut_last_eat_time, NULL);
-		update_last_meal_time(&philos[i]); //eat.c
+		update_last_meal_time(&philos[i]);
 	}
 	return (0);
 }
@@ -87,5 +87,5 @@ int	init_data(t_data *data, int ac, char **av)
 		data->nb_meals = ft_atoi(av[5]);
 	pthread_mutex_init(&data->mut_print, NULL);
 	pthread_mutex_init(&data->mut_keep_iter, NULL);
-	return (malloc_data(data)); //init_data.c
+	return (malloc_data(data));
 }

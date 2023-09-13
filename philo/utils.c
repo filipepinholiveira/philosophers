@@ -6,7 +6,7 @@
 /*   By: fpinho-d <fpinho-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 21:17:56 by fpinho-d          #+#    #+#             */
-/*   Updated: 2023/09/12 17:38:18 by fpinho-d         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:04:39 by fpinho-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	handle_1_philo(t_philo *philo)
 {
-	take_left_fork(philo); //take_fork_utils.c
-	ft_usleep(philo->data->die_time); //time.c
-	set_philo_state(philo, DEAD); //setter.c
+	take_left_fork(philo);
+	ft_usleep(philo->data->die_time);
+	set_philo_state(philo, DEAD);
 	drop_left_fork(philo);
 	return (1);
 }
@@ -25,9 +25,9 @@ void	print_msg(t_data *data, int id, char *msg)
 {
 	uint64_t	time;
 
-	time = get_time() - data->start_time; //time.c
+	time = get_time() - data->start_time;
 	pthread_mutex_lock(&data->mut_print);
-	if (get_keep_iterate(data)) //get_utils.c
+	if (get_keep_iterate(data))
 		printf("%lu %d %s\n", time, id, msg);
 	pthread_mutex_unlock(&data->mut_print);
 }
